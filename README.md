@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎧 AI Music Recommendation
 
-## Getting Started
+Sebuah project web app untuk memberikan rekomendasi musik secara personal berdasarkan prompt user menggunakan teknologi kecerdasan buatan (AI). Pengguna cukup mengetikkan suasana hati (*mood*), aktivitas, atau referensi lagu, dan AI akan menghasilkan daftar lagu yang sesuai.
 
-First, run the development server:
+---
 
+## ✨ Fitur Utama
+
+### 💬 **Input Prompt Natural**
+Tulis kalimat seperti "lagi galau", "butuh semangat", atau "lagu mirip 'Someone Like You'" untuk mendapatkan rekomendasi otomatis.
+
+### 🧠 **Rekomendasi Berbasis AI/NLP**
+Sistem menganalisis konteks teks menggunakan NLP (Natural Language Processing) untuk memahami maksud pengguna.
+
+### 🎶 **Hasil Personalisasi**
+Hasil rekomendasi disesuaikan dengan preferensi dan input pengguna secara dinamis.
+
+### ▶️ **Pemutar Lagu**
+Pengguna dapat langsung memilih dan memutar lagu hasil rekomendasi melalui pemutar yang terhubung dengan Spotify.
+
+---
+
+## 🛠️ Teknologi yang Digunakan
+
+| Komponen      | Teknologi                         |
+| ------------- | --------------------------------- |
+| **Frontend**  | Tailwind CSS, React Icons, ShadCN |
+| **Fullstack** | Next.js (Frontend & Backend)      |
+| **AI/NLP**    | Gemini API / Prompt Engineering   |
+| **Integrasi** | Spotify Web API                   |
+
+---
+
+## 🚀 Cara Menjalankan Project
+
+### 1. Clone Repository
+Clone repository ke komputer lokal menggunakan perintah berikut:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/richardo231112175/AI-Music-Recommendation.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Masuk ke folder project
+Setelah repository selesai di-clone, masuk ke folder project dengan perintah berikut:
+```bash
+cd AI-Music-Recommendation
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Install dependency
+Install semua dependency yang diperlukan untuk project ini dengan menjalankan perintah:
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Konfigurasi `.env`
+Buat file `.env` di direktori root project. Anda dapat menemukan contoh file `.env` dengan nama `.env.example` di direktori root project. Salin file tersebut dan ubah nama file salinan menjadi `.env`. Setelah itu, isi file `.env` dengan data yang sudah diberikan oleh ketua kelompok.
 
-## Learn More
+### 5. Jalankan aplikasi
+Setelah semua dependency terinstall dan konfigurasi `.env` selesai, jalankan aplikasi dengan perintah:
+```bash
+npm run dev
+```
+Aplikasi akan berjalan di `http://localhost:3000`. Anda dapat mengakses aplikasi ini melalui browser.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 👥 Anggota Kelompok
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| No  | Nama                        | NIM       |
+| --- | -------------------         | --------- |
+| 1   | **Arnold Jefverson (Ketua)**| 231110087 |
+| 2   | **Valerio Liuz Kienata**    | 231110232 |
+| 3   | **Alvin Ong**               | 231110804 |
+| 4   | **Rendy**                   | 231111520 |
+| 5   | **Richardo Lieberio**       | 231112175 |
