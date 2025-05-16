@@ -2,7 +2,7 @@ import { type AppRouterInstance } from 'next/dist/shared/lib/app-router-context.
 import { type ReadonlyURLSearchParams, useSearchParams, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import axios, { type AxiosRequestConfig, type AxiosResponse } from 'axios';
-import { type toastifyCookieType } from '@/components/Toastify';
+import { toast } from 'react-toastify';
 import { getAuthorizationHeader, setCookie } from './actions';
 
 type responseType = {
@@ -46,11 +46,6 @@ export function useSpotifyCallback(): void {
             try {
                 const response: AxiosResponse<responseType> = await axios.post(spotifyUrl, spotifyData, spotifyConfig);
 
-                const toast: toastifyCookieType = {
-                    type: 'success',
-                    message: "You're now connected. Enjoy using the service.",
-                };
-
                 setCookie({
                     name: 'access_token',
                     value: response.data.access_token,
@@ -64,22 +59,9 @@ export function useSpotifyCallback(): void {
                     httpOnly: true,
                 });
 
-                setCookie({
-                    name: 'toast',
-                    value: JSON.stringify(toast),
-                    maxAge: 60 * 5,
-                });
+                toast.success("You're now connected. Enjoy using the service.");
             } catch {
-                const toast: toastifyCookieType = {
-                    type: 'error',
-                    message: 'Something went wrong. Please try again.',
-                };
-
-                setCookie({
-                    name: 'toast',
-                    value: JSON.stringify(toast),
-                    maxAge: 60 * 5,
-                });
+                toast.error('Something went wrong. Please try again.');
             }
 
             router.replace('/');

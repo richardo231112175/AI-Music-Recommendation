@@ -1,4 +1,4 @@
-import { JSX } from 'react';
+import { type JSX } from 'react';
 import Input from '@/components/Input';
 
 export default function RootPage(): JSX.Element {

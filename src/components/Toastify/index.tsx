@@ -1,11 +1,6 @@
-import { JSX } from 'react';
+import { type JSX } from 'react';
 import { ToastContainer, Bounce } from 'react-toastify';
 import 'react-toastify/ReactToastify.css';
-
-export type toastifyCookieType = {
-    type: 'info' | 'success' | 'warning' | 'error';
-    message: string;
-};
 
 export default function Toastify(): JSX.Element {
     return (

@@ -1,6 +1,6 @@
 'use client';
 
-import { JSX } from 'react';
+import { type JSX } from 'react';
 import { FiSend } from 'react-icons/fi';
 import { Button } from '@/components/Button';
 import { type useInputReturn, useInput } from './hooks';

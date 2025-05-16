@@ -1,4 +1,4 @@
-import { ReactNode, JSX } from 'react';
+import { type ReactNode, type JSX } from 'react';
 import Toastify from '@/components/Toastify';
 import './globals.css';
 
