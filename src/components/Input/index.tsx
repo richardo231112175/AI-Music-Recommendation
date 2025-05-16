@@ -3,8 +3,7 @@
 import { JSX } from 'react';
 import { FiSend } from 'react-icons/fi';
 import { Button } from '@/components/Button';
-import { useInput } from './hooks';
-import { useInputReturn } from './types';
+import { type useInputReturn, useInput } from './hooks';
 
 export default function Input(): JSX.Element {
     const { showPlaceholder, buttonDisabled, containerRef, inputRef, buttonRef, containerClickHandler, buttonClickHandler }: useInputReturn = useInput();

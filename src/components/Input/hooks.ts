@@ -1,5 +1,14 @@
-import { useState, useRef, useEffect, Dispatch, SetStateAction, RefObject, MouseEvent } from 'react';
-import { useInputReturn } from './types';
+import { type Dispatch, type SetStateAction, type RefObject, type MouseEvent, useState, useRef, useEffect } from 'react';
+
+export type useInputReturn = {
+    showPlaceholder: boolean;
+    buttonDisabled: boolean;
+    containerRef: RefObject<HTMLDivElement | null>;
+    inputRef: RefObject<HTMLDivElement | null>;
+    buttonRef: RefObject<HTMLButtonElement | null>;
+    containerClickHandler: () => void;
+    buttonClickHandler: (e: MouseEvent<HTMLButtonElement>) => void;
+};
 
 export function useInput(): useInputReturn {
     const [ showPlaceholder, setShowPlaceholder ]: [ boolean, Dispatch<SetStateAction<boolean>> ] = useState(true);
