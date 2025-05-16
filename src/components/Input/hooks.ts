@@ -1,4 +1,6 @@
 import { type Dispatch, type SetStateAction, type RefObject, type MouseEvent, useState, useRef, useEffect } from 'react';
+import { type AppDispatch, useAppDispatch } from '@/store';
+import { addChat } from '@/store/chat';
 
 export type useInputReturn = {
     showPlaceholder: boolean;
@@ -17,6 +19,8 @@ export function useInput(): useInputReturn {
     const containerRef: RefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(null);
     const inputRef: RefObject<HTMLDivElement | null> = useRef<HTMLDivElement | null>(null);
     const buttonRef: RefObject<HTMLButtonElement | null> = useRef<HTMLButtonElement | null>(null);
+
+    const dispatch: AppDispatch = useAppDispatch();
 
     useEffect(() => {
         const inputElement: HTMLDivElement | null = inputRef.current;
@@ -61,7 +65,10 @@ export function useInput(): useInputReturn {
         e.stopPropagation();
 
         if (inputRef.current && !buttonDisabled) {
-            console.log(inputRef.current.innerText);
+            dispatch(addChat({
+                sender: 'user',
+                chat: inputRef.current.innerText,
+            }));
         }
     }
 
