@@ -10,7 +10,7 @@ type StateProviderProps = {
 
 export default function StateProvider({ children }: StateProviderProps): JSX.Element {
     return (
-        <Provider store={store}>
+        <Provider store={ store }>
             { children }
         </Provider>
     );

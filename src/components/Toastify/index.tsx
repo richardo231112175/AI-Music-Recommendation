@@ -6,16 +6,16 @@ export default function Toastify(): JSX.Element {
     return (
         <ToastContainer
             position="top-center"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick={false}
-            rtl={false}
-            pauseOnFocusLoss={false}
+            autoClose={ 3000 }
+            hideProgressBar={ false }
+            newestOnTop={ false }
+            closeOnClick={ false }
+            rtl={ false }
+            pauseOnFocusLoss={ false }
             draggable
-            pauseOnHover={false}
+            pauseOnHover={ false }
             theme="colored"
-            transition={Bounce}
+            transition={ Bounce }
         />
     );
 }

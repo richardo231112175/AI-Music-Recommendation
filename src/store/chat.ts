@@ -2,20 +2,25 @@
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+export type messageType = {
+    sender: 'user' | 'ai',
+    text: string,
+};
+
 type initialStateType = {
-    chat: { sender: 'user' | 'ai', chat: string }[];
+    messages: messageType[];
 };
 
 const initialState: initialStateType = {
-    chat: [],
+    messages: [],
 };
 
 export const chatSlice = createSlice({
     name: 'chat',
     initialState,
     reducers: {
-        addChat: (state, action: PayloadAction<{ sender: 'user' | 'ai', chat: string }>) => {
-            state.chat.push(action.payload);
+        addChat: (state, action: PayloadAction<messageType>) => {
+            state.messages.push(action.payload);
         },
     },
 });

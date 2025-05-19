@@ -67,7 +67,7 @@ export function useInput(): useInputReturn {
         if (inputRef.current && !buttonDisabled) {
             dispatch(addChat({
                 sender: 'user',
-                chat: inputRef.current.innerText,
+                text: inputRef.current.innerText,
             }));
         }
     }
