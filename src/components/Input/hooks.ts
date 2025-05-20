@@ -73,7 +73,7 @@ export function useInput(): useInputReturn {
     }
 
     function keyDownHandler(e: KeyboardEvent<HTMLDivElement>): void {
-        if (e.key === 'Enter' && !isPrompting) {
+        if (e.key === 'Enter' && !e.shiftKey && !isPrompting) {
             e.preventDefault();
             submitHandler();
         }
