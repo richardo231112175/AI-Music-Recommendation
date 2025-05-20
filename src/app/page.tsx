@@ -19,7 +19,7 @@ export default function RootPage(): JSX.Element {
                 }
             </main>
             <div className={ `${messages.length ? 'bottom-0' : 'bottom-1/2 translate-y-1/2'} w-full max-w-3xl min-w-80 mx-auto px-4 md:px-8 fixed left-1/2 -translate-x-1/2 space-y-4 transition` }>
-                { !messages.length && <h2 className="text-center text-xl md:text-2xl font-semibold">AI Music Recommendation</h2> }
+                { !messages.length && <h2 className="text-center text-xl md:text-2xl font-semibold select-text">AI Music Recommendation</h2> }
                 <div className={ messages.length ? 'pb-4 md:pb-8 bg-background rounded-t-xl' : '' }>
                     <Input />
                 </div>

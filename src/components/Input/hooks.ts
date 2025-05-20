@@ -125,27 +125,50 @@ export function useInput(): useInputReturn {
             const promptResults: promptResultType[] = await JSON.parse(result);
 
             for (const [ index, promptResult ] of promptResults.entries()) {
-                const text: string = `${index + 1}. <b>${promptResult.title}</b> - <i>${promptResult.artist}</i>`;
-
                 if (!store.getState().chat.isPrompting) {
                     break;
                 }
+
+                let text: string = `${index + 1}. `;
 
                 for (let i: number = 1; i <= text.length; i ++) {
                     if (!store.getState().chat.isPrompting) {
                         break;
                     }
 
-                    await new Promise<void>((resolve) => setTimeout(() => {
-                        if (store.getState().chat.isPrompting) {
-                            dispatch(setPrompt({
-                                index: index,
-                                text: text.substring(0, i),
-                            }));
-                        }
+                    await updatePrompt(index, text);
+                }
 
-                        resolve();
-                    }, 15));
+                for (let i: number = 1; i <= promptResult.title.length; i ++) {
+                    if (!store.getState().chat.isPrompting) {
+                        break;
+                    }
+
+                    const temp: string = text + `<b>${promptResult.title.substring(0, i)}</b>`;
+                    await updatePrompt(index, temp);
+                }
+
+                text += `<b>${promptResult.title}</b>`;
+
+                for (let i: number = 1; i <= 3; i ++) {
+                    if (!store.getState().chat.isPrompting) {
+                        break;
+                    }
+
+                    const dash: string = ' - ';
+                    const temp: string = text + dash.substring(0, i);
+                    await updatePrompt(index, temp);
+                }
+
+                text += ' - ';
+
+                for (let i: number = 1; i <= promptResult.artist.length; i ++) {
+                    if (!store.getState().chat.isPrompting) {
+                        break;
+                    }
+
+                    const temp: string = text + `<i>${promptResult.artist.substring(0, i)}</i>`;
+                    await updatePrompt(index, temp);
                 }
             }
         } catch {
@@ -155,6 +178,16 @@ export function useInput(): useInputReturn {
         if (store.getState().chat.isPrompting) {
             dispatch(setIsPrompting(false));
         }
+    }
+
+    async function updatePrompt(index: number, text: string): Promise<void> {
+        await new Promise<void>((resolve) => setTimeout(() => {
+            if (store.getState().chat.isPrompting) {
+                dispatch(setPrompt({ index, text }));
+            }
+
+            resolve();
+        }, 12));
     }
 
     return { showPlaceholder, buttonDisabled, containerRef, inputRef, buttonRef, isPrompting, containerClickHandler, keyDownHandler, stopClickHandler, sendClickHandler };

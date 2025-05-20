@@ -80,27 +80,6 @@
     --sidebar-accent-foreground: oklch(0.205 0 0);
     --sidebar-border: oklch(0.922 0 0);
     --sidebar-ring: oklch(0.708 0 0);
-
-    /* Toastify */
-    --toastify-color-info: #3b82f6;
-    --toastify-color-success: #10b981;
-    --toastify-color-warning: #f59e0b;
-    --toastify-color-error: #ef4444;
-
-    --toastify-icon-color-info: var(--toastify-color-info);
-    --toastify-icon-color-success: var(--toastify-color-success);
-    --toastify-icon-color-warning: var(--toastify-color-warning);
-    --toastify-icon-color-error: var(--toastify-color-error);
-
-    --toastify-text-color-info: #fff;
-    --toastify-text-color-success: #fff;
-    --toastify-text-color-warning: #fff;
-    --toastify-text-color-error: #fff;
-
-    --toastify-color-progress-info: var(--toastify-color-info);
-    --toastify-color-progress-success: var(--toastify-color-success);
-    --toastify-color-progress-warning: var(--toastify-color-warning);
-    --toastify-color-progress-error: var(--toastify-color-error);
 }
 
 .dark {
@@ -135,27 +114,6 @@
     --sidebar-accent-foreground: oklch(0.985 0 0);
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.556 0 0);
-
-    /* Toastify */
-    --toastify-color-info: #60a5fa;
-    --toastify-color-success: #34d399;
-    --toastify-color-warning: #fbbf24;
-    --toastify-color-error: #f87171;
-
-    --toastify-icon-color-info: var(--toastify-color-info);
-    --toastify-icon-color-success: var(--toastify-color-success);
-    --toastify-icon-color-warning: var(--toastify-color-warning);
-    --toastify-icon-color-error: var(--toastify-color-error);
-
-    --toastify-text-color-info: #fff;
-    --toastify-text-color-success: #fff;
-    --toastify-text-color-warning: #fff;
-    --toastify-text-color-error: #fff;
-
-    --toastify-color-progress-info: var(--toastify-color-info);
-    --toastify-color-progress-success: var(--toastify-color-success);
-    --toastify-color-progress-warning: var(--toastify-color-warning);
-    --toastify-color-progress-error: var(--toastify-color-error);
 }
 
 @layer base {
