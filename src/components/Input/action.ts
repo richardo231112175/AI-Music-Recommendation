@@ -11,7 +11,7 @@ export type musicType = {
 };
 
 export async function sendPrompt(prompt: string): Promise<musicType[] | undefined> {
-    const ai: GoogleGenAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+    const ai: GoogleGenAI = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY });
 
     const model: string = 'gemini-2.0-flash-001';
     const contents: ContentListUnion = getContents(prompt);
