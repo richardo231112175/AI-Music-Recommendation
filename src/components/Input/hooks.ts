@@ -163,6 +163,13 @@ export function useInput(): useInputReturn {
                     const temp: string = text + `<i>${promptResult.artist.substring(0, i)}</i>`;
                     await updatePrompt(index, temp);
                 }
+
+                text += `<i>${promptResult.artist}</i>`;
+
+                if (promptResult.youtube_link) {
+                    text += `{{${promptResult.youtube_link}}}`;
+                    dispatch(setPrompt({ index, text }));
+                }
             }
         } catch {
             dispatch(setSystemError('Something went wrong!'));

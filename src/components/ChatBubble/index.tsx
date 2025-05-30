@@ -5,6 +5,7 @@ import parse from 'html-react-parser';
 import { useAppSelector } from '@/store';
 import { type messageStateType } from '@/store/chat';
 import { PulseLoader } from 'react-spinners';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 type ChatBubbleProps = {
     message: messageStateType;
@@ -41,8 +42,23 @@ export default function ChatBubble({ message }: ChatBubbleProps): JSX.Element {
                     { message.text.length && <ul>
                         { message.text.map((text, index) => {
                             const key: string = message.id + index;
+                            let youtubeLink: string | undefined;
+
+                            if (text.includes('{{') && text.includes('}}')) {
+                                const startIndex: number = text.indexOf('{{');
+                                const endIndex: number = text.indexOf('}}');
+                                
+                                youtubeLink = text.substring(startIndex + 2, endIndex);
+                                text = text.substring(0, startIndex);
+                            }
+
                             return (
-                                <p key={ key }>{ parse(text) }</p>
+                                <p key={ key } className="flex items-center gap-2">
+                                    { parse(text) }
+                                    { youtubeLink && <a href={ youtubeLink } title="View video" target="_blank" className="text-xs">
+                                        <FaExternalLinkAlt />
+                                    </a> }
+                                </p>
                             );
                         }) }
                     </ul> }
