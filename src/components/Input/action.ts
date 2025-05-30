@@ -1,8 +1,16 @@
 'use server';
 
 import { GoogleGenAI, Type, type GenerateContentConfig, type ContentListUnion, type GenerateContentResponse } from '@google/genai';
+import { youtube_v3 } from '@googleapis/youtube';
+import { type GaxiosPromise, type GaxiosResponse } from 'gaxios';
 
-export async function sendPrompt(prompt: string): Promise<string | undefined> {
+export type musicType = {
+    title: string;
+    artist: string;
+    youtube_link?: string;
+};
+
+export async function sendPrompt(prompt: string): Promise<musicType[] | undefined> {
     const ai: GoogleGenAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
     const model: string = 'gemini-2.0-flash-001';
@@ -24,7 +32,12 @@ export async function sendPrompt(prompt: string): Promise<string | undefined> {
 
     try {
         const response: GenerateContentResponse = await ai.models.generateContent({ model, contents, config });
-        return response.text;
+
+        if (response.text) {
+            const promptResults: musicType[] = await JSON.parse(response.text);
+            const musics: musicType[] = await getYoutubeLinks(promptResults);
+            return musics;
+        }
     } catch {}
 }
 
@@ -189,4 +202,35 @@ Output should be provided in JSON format with title and artist
             ],
         },
     ];
+}
+
+async function getYoutubeLinks(musics: musicType[]): Promise<musicType[]> {
+    try {
+        const youtube: youtube_v3.Youtube = new youtube_v3.Youtube({
+            auth: process.env.GOOGLE_API_KEY,
+        });
+
+        const searches: GaxiosPromise<youtube_v3.Schema$SearchListResponse>[] = musics.map((song) => youtube.search.list({
+            part: [ 'snippet' ],
+            q: `${song.title} by ${song.artist}`,
+            type: [ 'video' ],
+            maxResults: 1,
+        }));
+
+        const responses: GaxiosResponse<youtube_v3.Schema$SearchListResponse>[] = await Promise.all(searches);
+
+        const result: musicType[] = responses.map((response, index) => {
+            const video: youtube_v3.Schema$SearchResult | undefined = response.data.items?.[0];
+            const videoId: string | null | undefined = video?.id?.videoId;
+
+            return {
+                ...musics[index],
+                youtube_link: video?.id?.videoId ? `https://www.youtube.com/watch?v=${videoId}` : undefined,
+            };
+        });
+
+        return result;
+    } catch {
+        return musics;
+    }
 }

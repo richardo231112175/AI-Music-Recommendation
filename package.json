@@ -11,10 +11,12 @@
     },
     "dependencies": {
         "@google/genai": "^0.15.0",
+        "@googleapis/youtube": "^25.1.0",
         "@radix-ui/react-slot": "^1.2.0",
         "@reduxjs/toolkit": "^2.7.0",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
+        "gaxios": "^6.7.1",
         "html-react-parser": "^5.2.5",
         "lucide-react": "^0.503.0",
         "next": "15.3.1",

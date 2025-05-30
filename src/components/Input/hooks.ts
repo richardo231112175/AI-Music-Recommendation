@@ -1,7 +1,7 @@
 import { type Dispatch, type SetStateAction, type RefObject, type KeyboardEvent, type MouseEvent, useState, useRef, useEffect } from 'react';
 import store, { type AppDispatch, useAppSelector, useAppDispatch } from '@/store';
 import { addChat, setPrompt, setSystemError, setIsPrompting } from '@/store/chat';
-import { sendPrompt } from './action';
+import { sendPrompt, type musicType } from './action';
 
 export type useInputReturn = {
     showPlaceholder: boolean;
@@ -14,11 +14,6 @@ export type useInputReturn = {
     containerClickHandler: () => void;
     stopClickHandler: (e: MouseEvent<HTMLButtonElement>) => void;
     sendClickHandler: (e: MouseEvent<HTMLButtonElement>) => void;
-};
-
-type promptResultType = {
-    title: string;
-    artist: string;
 };
 
 export function useInput(): useInputReturn {
@@ -116,15 +111,13 @@ export function useInput(): useInputReturn {
 
     async function promptHandler(prompt: string): Promise<void> {
         try {
-            const result: string | undefined = await sendPrompt(prompt);
+            const musics: musicType[] | undefined = await sendPrompt(prompt);
 
-            if (!result) {
+            if (!musics) {
                 throw new Error;
             }
 
-            const promptResults: promptResultType[] = await JSON.parse(result);
-
-            for (const [ index, promptResult ] of promptResults.entries()) {
+            for (const [ index, promptResult ] of musics.entries()) {
                 if (!store.getState().chat.isPrompting) {
                     break;
                 }
