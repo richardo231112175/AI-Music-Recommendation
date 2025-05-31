@@ -16,7 +16,7 @@ Sistem menganalisis konteks teks menggunakan NLP (Natural Language Processing) u
 Hasil rekomendasi disesuaikan dengan preferensi dan input pengguna secara dinamis.
 
 ### ▶️ **Pemutar Lagu**
-Pengguna dapat langsung memilih dan memutar lagu hasil rekomendasi melalui pemutar yang terhubung dengan Spotify.
+Pengguna dapat langsung memilih dan memutar lagu hasil rekomendasi melalui YouTube.
 
 ---
 
@@ -27,7 +27,7 @@ Pengguna dapat langsung memilih dan memutar lagu hasil rekomendasi melalui pemut
 | **Frontend**  | Tailwind CSS, React Icons, ShadCN |
 | **Fullstack** | Next.js (Frontend & Backend)      |
 | **AI/NLP**    | Gemini API / Prompt Engineering   |
-| **Integrasi** | Spotify Web API                   |
+| **Integrasi** | Youtube Data API                  |
 
 ---
 
